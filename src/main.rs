@@ -1,12 +1,8 @@
 use axum::{routing::get, Router};
 use std::net::SocketAddr;
 use std::path::Path;
-use axum::handler::Handler;
-use axum::http::StatusCode;
-use axum::middleware::from_fn;
-use axum::response::{IntoResponse, Redirect};
+use axum::response::{Redirect};
 use axum::routing::get_service;
-use tower::ServiceBuilder;
 use tower_http::services::ServeDir;
 
 #[tokio::main]
