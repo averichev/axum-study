@@ -14,7 +14,7 @@ async fn main() {
     let app = Router::new()
         .route("/", get(handler))
         .nest(
-            "/static",
+            "/static/",
             static_router("static"),
         );
     let addr = SocketAddr::from(([127, 0, 0, 1], 20921));
