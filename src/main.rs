@@ -4,7 +4,7 @@ use std::path::Path;
 use axum::handler::Handler;
 use axum::http::StatusCode;
 use axum::middleware::from_fn;
-use axum::response::IntoResponse;
+use axum::response::{IntoResponse, Redirect};
 use axum::routing::get_service;
 use tower::ServiceBuilder;
 use tower_http::services::ServeDir;
@@ -13,6 +13,7 @@ use tower_http::services::ServeDir;
 async fn main() {
     let app = Router::new()
         .route("/", get(handler))
+        .route("/static", get(|| async { Redirect::permanent("/static/") }))
         .nest(
             "/static/",
             static_router("static"),
